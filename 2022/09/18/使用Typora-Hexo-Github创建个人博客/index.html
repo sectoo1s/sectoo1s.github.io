@@ -12,7 +12,7 @@
 
     <title>
         
-        SecTools Blog
+        使用Typora-Hexo-Github创建个人博客 - SecTools Blog
         
     </title>
 
@@ -81,7 +81,7 @@
                     <span>标签</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/archive">
                     <i class="iconfont icon-guidang2"></i>
                     <span>存档</span>
@@ -110,6 +110,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Github%E8%AE%BE%E7%BD%AE"><span class="toc-text">Github设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E5%BA%93"><span class="toc-text">1、创建存储库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%BB%91%E5%AE%9Agithub%E4%BB%93%E5%BA%93"><span class="toc-text">2、绑定github仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%E5%AE%89%E8%A3%85"><span class="toc-text">hexo安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="toc-text">更换主题</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -137,65 +141,72 @@
         
 
 
-<!-- 归档列表 -->
+<div class="post-container">
+    <div class="post-title">
+        使用Typora-Hexo-Github创建个人博客
+    </div>
 
-<div class="archives-container">
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-09-18 17:41:50</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>费劲了千辛万苦，我终于把自己的博客网站搭建起来了，中间踩了很多很多坑，准备写一篇博客记录一下。</p>
+<p>需要准备这些东西：</p>
+<ul>
+<li>github账户</li>
+<li>typora软件</li>
+<li>Picgo软件</li>
+</ul>
+<h3 id="Github设置"><a href="#Github设置" class="headerlink" title="Github设置"></a>Github设置</h3><h4 id="1、创建存储库"><a href="#1、创建存储库" class="headerlink" title="1、创建存储库"></a>1、创建存储库</h4><p>​	首先就是要新建一个github仓库，因为我们要将代码存放在其中。如果没有的话先去注册一个吧。注册教程有别人写好的，我会放在文章底部。</p>
+<p>​	来到github个人界面的存储库位置，点击新建。</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747215.png" alt="image-20220918131107828"></p>
+<p>​	</p>
+<p>​	这里创建的存储库名字，按照用户名.github.io来填写，一定要跟自己的名字保持一致，就像我这样。因为我已经创建过了，所以提示不可用。</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747079.png" alt="image-20220918131301325"></p>
+<p>​	</p>
+<p>​	如果你的名字不一致就会出现这种状况。它不能够直接访问，而是跟你的用户名叠加在一起，非常的不美观。</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747918.png" alt="image-20220918131642135"></p>
+<p>​	一致的话则可以通过 <code>用户名.github.io</code> 直接访问，就像这样高端大气上档次。</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747594.png" alt="image-20220918131945517"></p>
+<h4 id="2、绑定github仓库"><a href="#2、绑定github仓库" class="headerlink" title="2、绑定github仓库"></a>2、绑定github仓库</h4><p>​	</p>
+<p>​	</p>
+<h3 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h3><p>​	安装之前要确保自己的电脑上有nodejs，不然没办法进行后续的操作。</p>
+<p>先在电脑上创建一个myBlog文件夹，然后执行以下命令来安装hexo框架。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
-<div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-                    <span class="tag-text">2022</span>
-                </span>
-    <ul>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-18</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/18/使用Typora-Hexo-Github创建个人博客/">
-                        <span>
-                            使用Typora-Hexo-Github创建个人博客
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-18</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/18/test/">
-                        <span>
-                            test
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-18</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/18/hello-world/">
-                        <span>
-                            Hello World
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747328.png" alt="image-20220918142304810"></p>
+<p>安装完成后</p>
+<p>初始化博客：hexo	init</p>
+<p>静态部署：	hexo	g</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747480.png"></p>
+<p>本地查看网页：hexo	s</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747399.png" alt="image-20220918142651777"></p>
+<p>浏览器访问 <a href="https://link.zhihu.com/?target=http://baixin.io/2015/08/HEXO%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%9C%80%E5%8E%9F%E5%A7%8B%E7%9A%84%E6%95%88%E6%9E%9C%E4%BA%86">http://localhost:4000</a> 打开新部署的网页：</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747922.png" alt="image-20220918142637383"></p>
+<p>看到这个页面就说明安装成功。</p>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>但是我想使用这个主题，感觉不太好看。所以我又从官网挑选了一款自己喜欢的。</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209181747243.png" alt="image-20220918143250551"></p>
+<p>直接找到github然后clone下来，然后复制粘贴到<code>myBlog</code>的<code>themes</code>文件夹中,然后跟着教程进行相关配置。</p>
 
-    </ul>
-</div>
-
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
 </div>
 
     </div>
@@ -301,7 +312,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -310,6 +321,22 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+    <script src="https://giscus.app/client.js"
+    data-repo="aircloud/hexo-aircloud-blog"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkxMjkwNDgyNjg="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOB7EezM4COhKJ"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
 
 
 
