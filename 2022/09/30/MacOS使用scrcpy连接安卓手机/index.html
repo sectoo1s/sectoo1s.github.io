@@ -12,7 +12,7 @@
 
     <title>
         
-        SecTools Blog
+        MacOS使用scrcpy连接安卓手机 - SecTools Blog
         
     </title>
 
@@ -75,7 +75,7 @@
                     <span>主页</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
                     <span>标签</span>
@@ -110,6 +110,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-text">1、前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85scrcpy"><span class="toc-text">2、安装scrcpy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA"><span class="toc-text">3、连接手机</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -137,95 +141,60 @@
         
 
 
-<!-- 归档列表 -->
+<div class="post-container">
+    <div class="post-title">
+        MacOS使用scrcpy连接安卓手机
+    </div>
 
-<div class="archives-container">
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-09-30 15:26:02</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#AutoJS" title="AutoJS">AutoJS</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h4 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h4><p>想实现一个批量检测的功能，但是在PC端找不到教程。</p>
+<p>在论坛发了很多次帖子都被管理员删除了，感觉非常郁闷。</p>
+<p>看b站的时候发现了一个autojs，于是想通过这种方法操作一下。</p>
+<h4 id="2、安装scrcpy"><a href="#2、安装scrcpy" class="headerlink" title="2、安装scrcpy"></a>2、安装scrcpy</h4><p>由于对手机操作需要进行投屏，于是在这里先安装一个投屏软件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//github.com/Genymobile/scrcpy</span></span><br></pre></td></tr></table></figure>
 
-<div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-                    <span class="tag-text">2022</span>
-                </span>
-    <ul>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-30</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/30/MacOS使用scrcpy连接安卓手机/">
-                        <span>
-                            MacOS使用scrcpy连接安卓手机
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-29</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/29/Typora基础使用方法/">
-                        <span>
-                            Typora基础使用方法
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-29</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/29/NodeJS调用数据库查询手机号/">
-                        <span>
-                            NodeJS调用数据库查询手机号
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-19</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/19/python将三个列表合成一个/">
-                        <span>
-                            python将三个列表合成一个
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>09-18</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2022/09/18/使用Typora-Hexo-Github创建个人博客/">
-                        <span>
-                            使用Typora-Hexo-Github创建个人博客
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
+<p>就是这个<code>scrcpy</code>,开源且多平台可用，直接开整。</p>
+<p>我这里用的是MacOS,直接使用brew安装。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask android-platform-tools</span><br><span class="line">brew install scrcpy</span><br></pre></td></tr></table></figure>
 
-    </ul>
-</div>
+<p>上面那条命令使用来安装adb的，如果没有的话先执行这个。</p>
+<h4 id="3、连接手机"><a href="#3、连接手机" class="headerlink" title="3、连接手机"></a>3、连接手机</h4><ol>
+<li><p>连接usb数据线，打开usb调试，数据线连接手机，执行命令。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb tcpip <span class="number">5555</span>	<span class="comment">//开启adb后台进行并监听5555端口</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拔掉数据线执行命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect 手机<span class="variable constant_">IP</span>地址:<span class="number">5555</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>终端运行<code>scrcpy</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrcpy</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202209301541452.png" alt="image-20220930154112330"></p>
+</li>
+</ol>
+<p>成功连接。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
 </div>
 
     </div>
@@ -331,7 +300,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -340,6 +309,22 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+    <script src="https://giscus.app/client.js"
+    data-repo="aircloud/hexo-aircloud-blog"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkxMjkwNDgyNjg="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOB7EezM4COhKJ"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
 
 
 
