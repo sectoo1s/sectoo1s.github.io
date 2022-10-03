@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="sectools的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="sectools的博客">
+    <meta name="keyword"  content="hexo,sectools,sectools的博客,全栈开发,hx">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        AutoJS编写的支付宝转账脚本 - SecTools Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 遇 事 不 决 , 可 问 春 风。 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>HX</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 遇 事 不 决 , 可 问 春 风。 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        AutoJS编写的支付宝转账脚本
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-10-03 12:49:07</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#autojs" title="autojs">autojs</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>​	最近刚看完一套JS的基础课程，还发现了autojs这个框架。</p>
+<p>我个人有一个关于支付宝的需求，就尝试着写了一下，但是还有很多bug。</p>
+<p>先不管行不行的了，先把代码保存在这里，后面有空再修改一下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//packageName = com.eg.android.AlipayGphone</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    通过包名打开的速度要快几十倍</span></span><br><span class="line"><span class="comment">    app.launchApp(&quot;支付宝&quot;)</span></span><br><span class="line"><span class="comment">    app.launch(&quot;com.eg.android.AlipayGphone&quot;)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义一个点击函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">clickCenter</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> x = obj.<span class="title function_">bounds</span>().<span class="title function_">centerX</span>()</span><br><span class="line">    <span class="keyword">let</span> y = obj.<span class="title function_">bounds</span>().<span class="title function_">centerY</span>()</span><br><span class="line">    <span class="title function_">click</span>(x,y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打开支付宝并跳转到转账页面</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getStart</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//启动支付宝app</span></span><br><span class="line">    app.<span class="title function_">launch</span>(<span class="string">&quot;com.eg.android.AlipayGphone&quot;</span>)</span><br><span class="line">    <span class="title function_">sleep</span>(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击转账按钮</span></span><br><span class="line">    <span class="keyword">let</span> obj = <span class="title function_">text</span>(<span class="string">&quot;转账&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">    <span class="title function_">clickCenter</span>(obj);</span><br><span class="line">    <span class="title function_">sleep</span>(<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击转账到支付宝</span></span><br><span class="line">    obj = <span class="title function_">text</span>(<span class="string">&quot;转到支付宝&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">    <span class="title function_">clickCenter</span>(obj);</span><br><span class="line">    <span class="title function_">sleep</span>(<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">readFile</span>(<span class="params">path</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> txt = <span class="title function_">open</span>(path, mode=<span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> arr = txt.<span class="title function_">readlines</span>()</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 批量检测文本中的手机号信息</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getInfo</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span> ; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 选中支付宝转账框并输入手机号</span></span><br><span class="line">        obj = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.antui:id/input_edit&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">        <span class="title function_">clickCenter</span>(obj);</span><br><span class="line">        <span class="title function_">sleep</span>(random)</span><br><span class="line">        <span class="title function_">setText</span>(<span class="title class_">Trim</span>(arr[i]))</span><br><span class="line"></span><br><span class="line">        <span class="comment">//点击下一步</span></span><br><span class="line">        obj = <span class="title function_">text</span>(<span class="string">&quot;下一步&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">        <span class="title function_">clickCenter</span>(obj);</span><br><span class="line">        <span class="title function_">sleep</span>(<span class="number">1000</span>)</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.antui:id/message_content&quot;</span>).<span class="title function_">exists</span>())&#123;</span><br><span class="line">            obj = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.antui:id/buttonView&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">clickCenter</span>(obj)</span><br><span class="line">            <span class="title function_">sleep</span>(random)</span><br><span class="line">            <span class="keyword">let</span> errNumber = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.antui:id/input_edit&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">log</span>(errNumber.<span class="title function_">text</span>() + <span class="string">&quot;手机号不存在!&quot;</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="title function_">id</span>(<span class="string">&quot;android:id/alertTitle&quot;</span>).<span class="title function_">exists</span>()) &#123;</span><br><span class="line">            obj = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.socialcontactsdk:id/user_realname&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">clickCenter</span>(obj)</span><br><span class="line">            <span class="title function_">sleep</span>(random)</span><br><span class="line">            <span class="keyword">let</span> userName = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.transferapp:id/tf_receiveNameTextView&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="keyword">let</span> phoneNumber = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.transferapp:id/tf_receiveAccountTextView&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;姓名:&quot;</span> + userName.<span class="title function_">text</span>() + <span class="string">&quot;, 手机号:&quot;</span> + arr[i])</span><br><span class="line">            <span class="title function_">sleep</span>(random)</span><br><span class="line"></span><br><span class="line">            <span class="comment">//返回到输入手机号页面</span></span><br><span class="line">            obj = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.ui:id/title_bar_back_button&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">clickCenter</span>(obj)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 获取姓名和手机号信息</span></span><br><span class="line">            <span class="keyword">let</span> userName = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.transferapp:id/tf_receiveNameTextView&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="keyword">let</span> phoneNumber = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.transferapp:id/tf_receiveAccountTextView&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;姓名:&quot;</span> + userName.<span class="title function_">text</span>() + <span class="string">&quot;, 手机号:&quot;</span> + arr[i])</span><br><span class="line">            <span class="title function_">sleep</span>(random)</span><br><span class="line">            <span class="comment">//返回到输入手机号页面</span></span><br><span class="line">            obj = <span class="title function_">id</span>(<span class="string">&quot;com.alipay.mobile.ui:id/title_bar_back_button&quot;</span>).<span class="title function_">findOne</span>()</span><br><span class="line">            <span class="title function_">clickCenter</span>(obj)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//去除前后空格</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Trim</span>(<span class="params">str</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> str.<span class="title function_">replace</span>(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="string">&#x27;/sdcard/test/phone.txt&#x27;</span></span><br><span class="line"><span class="keyword">let</span> random = <span class="title function_">random</span>(<span class="number">5</span>,<span class="number">10</span>) * <span class="number">100</span></span><br><span class="line"><span class="keyword">let</span> arr = <span class="title function_">readFile</span>(path)</span><br><span class="line"><span class="title function_">toastLog</span>(<span class="string">&quot;检测开始!&quot;</span>)</span><br><span class="line"><span class="title function_">getStart</span>()</span><br><span class="line"><span class="title function_">getInfo</span>(arr)</span><br><span class="line"><span class="title function_">toastLog</span>(<span class="string">&quot;检测结束!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果搜索的手机号不存在，这跳出此次循环</span></span><br><span class="line"><span class="comment">// if(id(&quot;com.alipay.mobile.antui:id/message_content&quot;).exists())&#123;</span></span><br><span class="line"><span class="comment">//     obj = id(&quot;com.alipay.mobile.antui:id/buttonView&quot;).findOne()</span></span><br><span class="line"><span class="comment">//     clickCenter(obj)</span></span><br><span class="line"><span class="comment">//     sleep(1000)</span></span><br><span class="line"><span class="comment">// &#125; else &#123;</span></span><br><span class="line"><span class="comment">//     getInfo(arr)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 目前的问题 大概查询20次左右就会频繁或者发现代理 </span></span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/sectools">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/sectools">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/sectools">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/sectools">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/sectools">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">浙ICP备16035324号-1</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://giscus.app/client.js"
+    data-repo="aircloud/hexo-aircloud-blog"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkxMjkwNDgyNjg="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOB7EezM4COhKJ"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+
+
+
+</html>
