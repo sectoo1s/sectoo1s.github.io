@@ -12,7 +12,7 @@
 
     <title>
         
-        collect - SecTools Blog
+        Headers格式化小脚本 - SecTools Blog
         
     </title>
 
@@ -87,7 +87,7 @@
                     <span>存档</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/collect/">
                     <i class="iconfont icon-shoucang1"></i>
                     <span>收藏</span>
@@ -109,6 +109,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
     
 </div>
 
@@ -135,16 +139,42 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-content no-indent">
-    <h3 id="AutoJS学习资料"><a href="#AutoJS学习资料" class="headerlink" title="AutoJS学习资料"></a>AutoJS学习资料</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52697994/article/details/119181066">https://blog.csdn.net/qq_52697994/article/details/119181066</a></p>
-<h3 id="python的一些小知识"><a href="#python的一些小知识" class="headerlink" title="python的一些小知识"></a>python的一些小知识</h3><p><strong>sys.argv的讲解</strong>:	<a target="_blank" rel="noopener" href="https://www.cnblogs.com/aland-1415/p/6613449.html">https://www.cnblogs.com/aland-1415/p/6613449.html</a></p>
-<p><strong>三个列表合成一个</strong>：<a target="_blank" rel="noopener" href="https://qa.1r1g.com/sf/ask/4159881001/">https://qa.1r1g.com/sf/ask/4159881001/</a></p>
 
-    
-    <div id="comment-container"></div>
-    <div id="disqus_thread"></div>
-    <div class="giscus"></div>
-    <div id="lv-container"></div>
+
+<div class="post-container">
+    <div class="post-title">
+        Headers格式化小脚本
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-10-03 21:17:47</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python" title="python">python</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>​	JS逆向的时候用它来处理headers请求头。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 作者：hx</span></span><br><span class="line"><span class="comment"># 开发时间：2022/8/28 2:37 下午</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">headerStr = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span></span><br><span class="line"><span class="string">Accept-Encoding: gzip, deflate, br</span></span><br><span class="line"><span class="string">Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7</span></span><br><span class="line"><span class="string">Cache-Control: no-cache</span></span><br><span class="line"><span class="string">Connection: keep-alive</span></span><br><span class="line"><span class="string">Cookie: PHPSESSID=e20lbeo6aig5mbd4plnjvrf3v1; __btu__=96167b4df9c899d8ef48da9f26e664ecca6aae25; __btc__=fe4cda68c139654ccd067c400d321b014c44ed50; notice=0; _currentUrl_=%2FMessage; __btuc__=&quot;&quot;</span></span><br><span class="line"><span class="string">Host: www.butian.net</span></span><br><span class="line"><span class="string">Pragma: no-cache</span></span><br><span class="line"><span class="string">Referer: https://www.butian.net/</span></span><br><span class="line"><span class="string">sec-ch-ua: &quot;Chromium&quot;;v=&quot;104&quot;, &quot; Not A;Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;104&quot;</span></span><br><span class="line"><span class="string">sec-ch-ua-mobile: ?0</span></span><br><span class="line"><span class="string">sec-ch-ua-platform: &quot;macOS&quot;</span></span><br><span class="line"><span class="string">Sec-Fetch-Dest: document</span></span><br><span class="line"><span class="string">Sec-Fetch-Mode: navigate</span></span><br><span class="line"><span class="string">Sec-Fetch-Site: same-origin</span></span><br><span class="line"><span class="string">Sec-Fetch-User: ?1</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="string">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">ret = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> headerStr:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;\n&#x27;</span>:</span><br><span class="line">        i = <span class="string">&quot;&#x27;,\n&#x27;&quot;</span></span><br><span class="line">    ret += i</span><br><span class="line"></span><br><span class="line">ret = re.sub(<span class="string">&quot;: &quot;</span>, <span class="string">&quot;&#x27;: &#x27;&quot;</span>, ret)</span><br><span class="line"><span class="built_in">print</span>(ret[<span class="number">3</span>: -<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下</p>
+<p><img src="https://raw.githubusercontent.com/sectoo1s/images/main/202210032119234.png" alt="image-20221003211922149"></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
 </div>
 
     </div>
@@ -250,7 +280,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
